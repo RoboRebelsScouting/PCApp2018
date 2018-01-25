@@ -1,7 +1,7 @@
 package com.walpolerobotics.scouting.model;
 
 /**
- * Created by 1153 on 1/28/2017.
+ * Created by 1153 on 1/24/2018.
  */
 public class RobotMatchData {
     public Integer timeStamp;
@@ -10,7 +10,6 @@ public class RobotMatchData {
     public Integer robotNumber;
     public String firstCompetition;
     public Integer subEvent;
-    public Integer boilerTime;
 
 
 

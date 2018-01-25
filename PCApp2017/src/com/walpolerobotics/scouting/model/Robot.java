@@ -1,7 +1,7 @@
 package com.walpolerobotics.scouting.model;
 
 /**
- * Created by 1153 on 1/30/2016.
+ * Created by 1153 on 1/24/2018.
  */
 import javafx.beans.property.*;
 
