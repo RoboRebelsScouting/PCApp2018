@@ -22,7 +22,7 @@ public class DataBase {
 
     String url = "jdbc:mysql://localhost:3306/roborebels";
     String user = "root";
-    String password = "roborebels1153";
+    String password = "1153";
 
     public DataBase() {
 
@@ -52,19 +52,22 @@ public class DataBase {
             stmt = con.createStatement();
             String ss = new String();
             //ss = "INSERT INTO pitInfo(Scout)\nVALUES\n(";
-            ss = "INSERT INTO pitinfo(competition, team, scouterName, ballCapacity, tallFootPrint, frame, weight, shooting, gearCollect, ballCollection, climb, customRope, email)\nVALUES\n(" + "\"" + rpd.competition +"\"";
-            ss += ", \"" + rpd.team + "\"";
+            ss = "INSERT INTO pitinfo(scouterName, competition, team, weight, footPrint, frame, code, startLocation, autoScore, pickup, allianceSwitch, opponentSwitch, vault, scale, climb)\nVALUES\n(" + "\"" + rpd.competition +"\"";
             ss += ", \"" + rpd.scouterName + "\"";
-            ss += ", \"" + rpd.ballCapacity + "\"";
+            ss += ", \"" + rpd.competition + "\"";
+            ss += ", \"" + rpd.team + "\"";
+            ss += ", \"" + rpd.weight + "\"";
             ss += ", \"" + rpd.footPrint + "\"";
             ss += ", \"" + rpd.frame + "\"";
-            ss += ", \"" + rpd.weight + "\"";
-            ss += ", \"" + rpd.shooting + "\"";
-            ss += ", \"" + rpd.gearCollect + "\"";
-            ss += ", \"" + rpd.ballCollection + "\"";
-            ss += ", \"" + rpd.climbAbility + "\"";
-            ss += ", \"" + rpd.rope + "\"";
-            ss += ", \"" + rpd.email + "\")";
+            ss += ", \"" + rpd.code + "\"";
+            ss += ", \"" + rpd.startLocation + "\"";
+            ss += ", \"" + rpd.autoScore + "\"";
+            ss += ", \"" + rpd.pickup + "\"";
+            ss += ", \"" + rpd.allianceSwitch + "\"";
+            ss += ", \"" + rpd.opponentSwitch + "\")";
+            ss += ", \"" + rpd.vault + "\"";
+            ss += ", \"" + rpd.scale + "\"";
+            ss += ", \"" + rpd.climb + "\")";
 
 
             stmt.execute(ss);
@@ -78,60 +81,6 @@ public class DataBase {
 
 
     }
-
-    public void writePilotDataToDB (PilotData pd) {
-        Statement stmt = null;
-        ResultSet rs = null;
-
-
-            try {
-                stmt = con.createStatement();
-                String ss = "SELECT * FROM pilotdata;";
-
-                rs = stmt.executeQuery(ss);
-                Boolean dataExists = false;
-
-
-                while (rs.next()) {
-
-
-                    String FirstCompetition = rs.getString("competition");
-                    String MatchNumber = rs.getString("matchNumber");
-                    String AllianceColor = rs.getString("allianceColor");
-
-
-                    if ((FirstCompetition.equals(pd.firstCompetition.getValue())) && (MatchNumber.equals(pd.matchNumber.getValue())) && (AllianceColor.equals(pd.allianceColor.getValue()))) {
-                        dataExists = true;
-                    }
-                }
-
-
-                if (!dataExists) {
-                    for (PilotMatchData pmd : pd.getEventList()) {
-
-                        stmt = con.createStatement();
-                        ss = "INSERT INTO pilotdata(competition, matchNumber, allianceColor, timeStamp, gameEvent, teamNumber, totalGearTime, ropeTime)\nVALUES\n(" + "\"" + pmd.firstCompetition + "\"";
-                        ss += ", \"" + pmd.matchNumber + "\"";
-                        ss += ", \"" + pmd.allianceColor + "\"";
-                        ss += ", \"" + pmd.timeStamp + "\"";
-                        ss += ", \"" + pmd.gameEvent + "\"";
-                        ss += ", \"" + pmd.teamNumber + "\"";
-                        ss += ", \"" + pmd.gearTime + "\"";
-                        ss += ", \"" + pmd.ropeTime + "\")";
-
-
-                        System.out.println(ss);
-
-                        stmt.execute(ss);
-                    }
-                }
-
-            }catch(SQLException ex){
-                        System.out.println("SQLException: " + ex.getMessage());
-                    }
-
-    }
-
 
 
 
@@ -167,11 +116,10 @@ public class DataBase {
                         try{
 
                                 stmt = con.createStatement();
-                                ss = "INSERT INTO matchdata (robotNumber, matchNumber, gameEvent, subEvent, boilerTime, timeStamp, scouterName, firstCompetition)\nVALUES\n(" + rm.robotNumber.intValue();
+                                ss = "INSERT INTO matchdata (robotNumber, matchNumber, gameEvent, subEvent, timeStamp, scouterName, firstCompetition)\nVALUES\n(" + rm.robotNumber.intValue();
                                 ss += ", \"" + rm.matchNumber.get() + "\"";
                                 ss += ", \"" + rmd.gameEvent + "\"";
                                 ss += ", \"" + rmd.subEvent + "\"";
-                                ss += ", \"" + rmd.boilerTime + "\"";
                                 ss += ", \"" + rmd.timeStamp + "\"";
                                 ss += ", \"" + rm.scouterName.get() + "\"";
                                 ss += ", \"" + rm.firstCompetition.get() + "\"";
@@ -198,38 +146,6 @@ public class DataBase {
 
     }
 
-    public void writeFirstdataToDB (FirstMatchData fmd) {
-        Statement stmt = null;
-        ResultSet rs = null;
-
-
-        try {
-            stmt = con.createStatement();
-             String ss = new String();
-
-                    stmt = con.createStatement();
-                    ss = "INSERT INTO firstalliancedata(teamNumber, eventCode, qualRank, avgscore, avgHighFuel, avgTeleHigh, avgTeleLow, avgClimbPoints, avgRotorsEngaged)\nVALUES\n(" + "\"" + fmd.teamNumber + "\"";
-                    ss += ", \"" + fmd.eventCode + "\"";
-                    ss += ", \"" + fmd.qualRank + "\"";
-                    ss += ", \"" + fmd.avgScore + "\"";
-                    ss += ", \"" + fmd.avgHighFuel + "\"";
-                    ss += ", \"" + fmd.avgTeleHigh + "\"";
-                    ss += ", \"" + fmd.avgTeleLow + "\"";
-                    ss += ", \"" + fmd.avgClimbPoints + "\"";
-                    ss += ", \"" + fmd.avgRotorsEngaged + "\")";
-
-
-                    System.out.println(ss);
-
-                    stmt.execute(ss);
-
-
-
-        }catch(SQLException ex){
-            System.out.println("SQLException: " + ex.getMessage());
-        }
-
-    }
     public void constructAllianceData (AllianceData ad) {
         Statement stmt = null;
         ResultSet rs = null;

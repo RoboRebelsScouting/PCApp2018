@@ -63,21 +63,23 @@ public class mainapp extends Application {
     }
 
     public void importAllRobotMatchData() {
-        File folder = new File("C:/Users/1153/Documents/ImportedMatchFiles");
+        File folder = new File("C:/Users/1153/Documents/NewMatchFiles");
 
         String pathName = folder.getAbsolutePath();
         String[] listOfFiles = folder.list();
-        for (int c = 0; c < listOfFiles.length; c++) {
-            String fullPathName = pathName + "/" + listOfFiles[c];
-            File newFile = new File(fullPathName);
-            if (fullPathName.endsWith(".csv")) {
-                if (fullPathName.endsWith("-pit.csv")) {
-                    importRobotPitData(newFile);
-                } else {
-                    if (fullPathName.endsWith("-alliance.csv")) {
-                        importAlliances(newFile);
+        if (listOfFiles != null){
+            for (int c = 0; c < listOfFiles.length; c++) {
+                String fullPathName = pathName + "/" + listOfFiles[c];
+                File newFile = new File(fullPathName);
+                if (fullPathName.endsWith(".csv")) {
+                    if (fullPathName.endsWith("-pit.csv")) {
+                        importRobotPitData(newFile);
                     } else {
-                        importRobotMatchData(newFile);
+                        if (fullPathName.endsWith("-alliance.csv")) {
+                            importAlliances(newFile);
+                        } else {
+                            importRobotMatchData(newFile);
+                        }
                     }
                 }
             }
@@ -208,9 +210,10 @@ public class mainapp extends Application {
                     rpd.autoScore = lineList[8];
                     rpd.pickup = lineList[9];
                     rpd.vault = lineList[10];
-                    rpd.bbyScale = lineList[11];
-                    rpd.scale = lineList[12];
-                    rpd.climb = lineList[13];
+                    rpd.allianceSwitch = lineList[11];
+                    rpd.opponentSwitch = lineList[12];
+                    rpd.scale = lineList[13];
+                    rpd.climb = lineList[14];
 
 
 

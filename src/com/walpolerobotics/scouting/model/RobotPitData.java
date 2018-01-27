@@ -4,7 +4,7 @@ package com.walpolerobotics.scouting.model;
  * Created by 1153 on 1/24/2018.
  */
 public class RobotPitData {
-    public String scouterName = "";
+    public String scouterName;
     public String competition;
     public String team;
     public Integer weight;
@@ -14,7 +14,8 @@ public class RobotPitData {
     public String startLocation;
     public String autoScore;
     public String pickup;
-    public String bbyScale;
+    public String allianceSwitch;
+    public String opponentSwitch;
     public String vault;
     public String scale;
     public String climb;
@@ -33,7 +34,8 @@ public class RobotPitData {
         this.autoScore = "";
         this.pickup = "";
         this.vault = "";
-        this.switch = "";
+        this.allianceSwitch = "";
+        this.opponentSwitch = "";
         this.scale = "";
         this.climb = "";
 }}
