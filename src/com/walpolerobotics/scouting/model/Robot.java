@@ -21,7 +21,6 @@ public class Robot {
         robotMatch = new ArrayList<RobotMatch>();
 
     }
-//ordering the variables *****don't forget to add to the int line)
     public Robot(int robotNumber ) {
 
         this.robotNumber = new SimpleIntegerProperty(robotNumber);

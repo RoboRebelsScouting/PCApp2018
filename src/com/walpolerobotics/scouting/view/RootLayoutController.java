@@ -4,6 +4,7 @@ package com.walpolerobotics.scouting.view;
  * Created by 1153 on 2/4/2016.
  */
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,7 +23,6 @@ public class RootLayoutController {
     }
     @FXML
     private void handleImport(){
-
 
         mainApp.importAllRobotMatchData();
 

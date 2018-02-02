@@ -6,10 +6,7 @@ package com.walpolerobotics.scouting.view;
 import com.walpolerobotics.scouting.model.RobotMatch;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import com.walpolerobotics.scouting.mainapp;
 import com.walpolerobotics.scouting.model.Robot;
 //making the table
@@ -29,7 +26,6 @@ public class RobotOverviewController {
 //file import drop down option
     @FXML
     private void handleImport(){
-
 
         mainApp.importAllRobotMatchData();
 
