@@ -29,7 +29,6 @@ public class mainapp extends Application {
     private ObservableList<RobotMatch> robotMatchInfo = FXCollections.observableArrayList();
     private ObservableList<RobotPitData> robotPitDataList = FXCollections.observableArrayList();
     private ObservableList<String> importedFilesList = FXCollections.observableArrayList();
-    private ObservableList<AllianceData> AllianceDataList = FXCollections.observableArrayList();
 
 
     public DataBase db;
@@ -75,16 +74,12 @@ public class mainapp extends Application {
                     if (fullPathName.endsWith("-pit.csv")) {
                         importRobotPitData(newFile);
                     } else {
-                        if (fullPathName.endsWith("-alliance.csv")) {
-                            importAlliances(newFile);
-                        } else {
                             importRobotMatchData(newFile);
                         }
                     }
                 }
             }
         }
-    }
 
     public void importRobotMatchData(File file) {
 
@@ -167,7 +162,7 @@ public class mainapp extends Application {
         }
 
         try {
-            String newPath = "C:\\Users\\1153\\Documents\\PreviouslyAddedMatches";
+            String newPath = "C:\\Users\\1153s\\Documents\\ImportedMatchFiles";
             String newName = newPath+File.separator+file.getName();
 
             Files.move(Paths.get(file.getAbsolutePath()), Paths.get(newName));
@@ -179,6 +174,7 @@ public class mainapp extends Application {
     }
 
     public void importRobotPitData(File file) {
+        File folder = new File("C:/Users/1153s/Documents/NewPitFiles");
         try {
             System.out.println("Reading first file " + file.getName());
 
@@ -230,7 +226,7 @@ public class mainapp extends Application {
             e.printStackTrace();
         }
         try {
-            String newPath = "C:\\Users\\1153\\Documents\\PreviouslyAddedPitInfo";
+            String newPath = "C:\\Users\\1153s\\Documents\\ImportedPitFiles";
             String newName = newPath+File.separator+file.getName();
             if(Files.exists(Paths.get(newName))){
                 newName += System.currentTimeMillis();
@@ -240,43 +236,6 @@ public class mainapp extends Application {
             e.printStackTrace();
         }
 
-    }
-    public void importAlliances(File file) {
-        try {
-            System.out.println("Reading first file " + file.getName());
-
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
-
-
-            int lineCount = 0;
-
-          ;
-
-            while ((line = br.readLine()) != null) {
-                AllianceData ad = new AllianceData();
-                String[] lineList = line.split(",");
-
-                    ad.allianceNumber = Integer.parseInt(lineList[0]);
-                    ad.robot1 = Integer.parseInt(lineList[1]);
-                    ad.robot2 = Integer.parseInt(lineList[2]);
-                    ad.robot3 = Integer.parseInt(lineList[3]);
-
-
-                    AllianceDataList.add(ad);
-                    lineCount++;
-
-                    // add this robot pit data to the list
-
-
-
-            }
-            importedFilesList.add(file.getName());
-            br.close();
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     public void initRootLayout() {
@@ -326,9 +285,6 @@ public class mainapp extends Application {
             db.writePitDataToDB(rpd);
         }
 
-        for (AllianceData ad : this.AllianceDataList){
-            db.constructAllianceData(ad);
-        }
     }
 
 
