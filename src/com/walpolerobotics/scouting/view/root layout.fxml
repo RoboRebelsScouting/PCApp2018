@@ -14,6 +14,7 @@
           <items>
             <MenuItem mnemonicParsing="false" onAction="#handleImport" text="Import Robot CSV" />
             <MenuItem mnemonicParsing="false" onAction="#exportMysql" text="Export to MySQL" />
+            <MenuItem mnemonicParsing="false" onAction="#checkData" text="Check Data" />
             <MenuItem mnemonicParsing="false" text="Close" />
           </items>
         </Menu>

@@ -21,22 +21,25 @@ public class RootLayoutController {
     public void setMainApp(mainapp mainApp){
         this.mainApp = mainApp;
     }
+
     @FXML
     private void handleImport(){
 
         mainApp.importAllRobotMatchData();
 
-
     }
 
     @FXML
     private void exportMysql(){
-       mainApp.exportMysql();
+
+        mainApp.exportMysql();
+
     }
 
+    @FXML
+    private void checkData(){
 
+        mainApp.checkData();
 
-
-
-
+    }
 }

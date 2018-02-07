@@ -289,6 +289,20 @@ public class mainapp extends Application {
 
 
 
+    public void checkData(){
+        File folder = new File("C:/Users/1153s/Documents/NewMatchFiles");
+
+        String pathName = folder.getAbsolutePath();
+        String[] listOfFiles = folder.list();
+        int fileLength = listOfFiles.length;
+        int matchFiles = 6;
+        if (fileLength != matchFiles){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Missing Files");
+            alert.setContentText("There are missing files!");
+            alert.showAndWait();
+        }
+    }
 
 
 

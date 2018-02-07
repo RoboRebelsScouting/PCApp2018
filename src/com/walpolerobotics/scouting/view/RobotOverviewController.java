@@ -22,14 +22,14 @@ public class RobotOverviewController {
     private Button importdata;
     @FXML
     private Button exportdata;
+    @FXML
+    private Button checkdata;
 
 //file import drop down option
     @FXML
     private void handleImport(){
 
         mainApp.importAllRobotMatchData();
-
-
     }
 
     @FXML
@@ -37,6 +37,10 @@ public class RobotOverviewController {
         mainApp.exportMysql();
     }
 
+    @FXML
+    private void checkData(){
+        mainApp.checkData();
+    }
 
 
 
