@@ -296,10 +296,20 @@ public class mainapp extends Application {
         String[] listOfFiles = folder.list();
         int fileLength = listOfFiles.length;
         int matchFiles = 6;
-        if (fileLength != matchFiles){
+        if (fileLength < matchFiles){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Missing Files");
-            alert.setContentText("There are missing files!");
+            alert.setContentText("Files are missing!");
+            alert.showAndWait();
+        } else if(fileLength > matchFiles) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Extra Files");
+            alert.setContentText("There are more than 6 files.");
+            alert.showAndWait();
+        } else if(fileLength == matchFiles) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Correct Number Of Files");
+            alert.setContentText("There are 6 files.");
             alert.showAndWait();
         }
     }
