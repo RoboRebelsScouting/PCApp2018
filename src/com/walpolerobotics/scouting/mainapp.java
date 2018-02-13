@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -29,7 +32,7 @@ public class mainapp extends Application {
     private ObservableList<RobotMatch> robotMatchInfo = FXCollections.observableArrayList();
     private ObservableList<RobotPitData> robotPitDataList = FXCollections.observableArrayList();
     private ObservableList<String> importedFilesList = FXCollections.observableArrayList();
-
+    private List<MatchSet> matchSetList = new ArrayList <MatchSet>();
 
     public DataBase db;
 
@@ -201,13 +204,12 @@ public class mainapp extends Application {
                     rpd.weight = Integer.parseInt(lineList[3]);
                     rpd.footPrint = lineList[4];
                     rpd.frame = lineList[5];
-                    rpd.code = lineList[6];
+                    rpd.codeLanguage = lineList[6];
                     rpd.startLocation = lineList[7];
                     rpd.autoScore = lineList[8];
                     rpd.pickup = lineList[9];
                     rpd.vault = lineList[10];
                     rpd.allianceSwitch = lineList[11];
-                    rpd.opponentSwitch = lineList[12];
                     rpd.scale = lineList[13];
                     rpd.climb = lineList[14];
 
@@ -287,7 +289,56 @@ public class mainapp extends Application {
 
     }
 
+    public MatchSet findMatchSet (int matchNumber) {
 
+        // loop through all existing match sets in the match set list
+        // if we have one for the match number we are looking for, return it
+        for (MatchSet c_matchSet : matchSetList) {
+            if (c_matchSet.matchNumber == matchNumber) {
+                return c_matchSet;
+            }
+        }
+
+// if we get here, it means we don’t have a match set for the match number
+// create one, then add it to the match list and return the match set we just created
+        MatchSet t_matchSet = new MatchSet(matchNumber);
+        matchSetList.add(t_matchSet);
+        return t_matchSet;
+    }
+
+    public void reportMissingData() {
+        // get all the records from the database
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/roborebels", "root", "1153");
+            Statement stmt;
+            ResultSet rs;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * from matchdata");
+
+            // iterate through the records
+            while (rs.next()) {
+
+                // get match number, robot number, alliance color, alliance position from the record
+                // subtract one from the alliancePosition since the array in MatchSet goes from 0-2 not 1-3
+                int matchNumber = rs.getInt("Match Number");
+                int robotNumber = rs.getInt("Robot Number");
+                int alliancePosition = rs.getInt("Alliance Position");
+                String allianceColor = rs.getString("Alliance Color");
+
+                alliancePosition -= 1;
+
+                MatchSet t_matchSet = findMatchSet(matchNumber);
+                if (allianceColor == "red") {
+                    t_matchSet.redNum[alliancePosition] = robotNumber;
+                } else {
+                    t_matchSet.blueNum[alliancePosition] = robotNumber;
+                }
+            }
+
+        }catch(java.sql.SQLException e){
+            System.out.println("Error opening SQL Database.");
+        }
+    }
 
     public void checkData(){
         File folder = new File("C:/Users/1153s/Documents/NewMatchFiles");

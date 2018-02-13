@@ -19,13 +19,19 @@ public class RobotOverviewController {
 
 //(button on the right side of the GUI)
     @FXML
+    private Button checkdata;
+    @FXML
     private Button importdata;
     @FXML
     private Button exportdata;
     @FXML
-    private Button checkdata;
+    private Button reportmissingdata;
 
 //file import drop down option
+    @FXML
+    private void checkData(){
+        mainApp.checkData();
+    }
     @FXML
     private void handleImport(){
 
@@ -38,8 +44,8 @@ public class RobotOverviewController {
     }
 
     @FXML
-    private void checkData(){
-        mainApp.checkData();
+    private void reportMissingData(){
+        mainApp.reportMissingData();
     }
 
 

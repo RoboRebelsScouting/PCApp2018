@@ -10,12 +10,11 @@ public class RobotPitData {
     public Integer weight;
     public String footPrint;
     public String frame;
-    public String code;
+    public String codeLanguage;
     public String startLocation;
     public String autoScore;
     public String pickup;
     public String allianceSwitch;
-    public String opponentSwitch;
     public String vault;
     public String scale;
     public String climb;
@@ -29,13 +28,12 @@ public class RobotPitData {
         this.weight = 0;
         this.footPrint = "";
         this.frame = "";
-        this.code = "";
+        this.codeLanguage = "";
         this.startLocation = "";
         this.autoScore = "";
         this.pickup = "";
         this.vault = "";
         this.allianceSwitch = "";
-        this.opponentSwitch = "";
         this.scale = "";
         this.climb = "";
 }}

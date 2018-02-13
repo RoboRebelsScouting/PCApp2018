@@ -28,24 +28,7 @@
         </AnchorPane>
         <AnchorPane id="" blendMode="SRC_OVER" minHeight="0.0" minWidth="0.0" prefHeight="439.0" prefWidth="278.0">
           <children>
-            <Button fx:id="importdata" layoutX="73.0" layoutY="99.0" mnemonicParsing="false" onAction="#handleImport" prefHeight="50.0" prefWidth="121.0" text="Import" textOverrun="CLIP">
-              <effect>
-                <DropShadow>
-                  <color>
-                    <Color blue="0.880" green="1.000" red="0.000" fx:id="x1" />
-                  </color>
-                </DropShadow>
-              </effect>
-              <font>
-                <Font name="Courier New" size="15.0" fx:id="x2" />
-              </font>
-            </Button>
-            <Button fx:id="exportdata" font="$x2" layoutX="73.0" layoutY="195.0" mnemonicParsing="false" onAction="#exportMysql" prefHeight="50.0" prefWidth="121.0" text="Export" textOverrun="CLIP">
-              <effect>
-                <DropShadow color="$x1" />
-              </effect>
-            </Button>
-            <Button fx:id="checkdata" layoutX="75.0" layoutY="289.0" mnemonicParsing="false" onAction="#checkData" prefHeight="50.0" prefWidth="121.0" text="Check Data" textOverrun="CLIP">
+            <Button fx:id="checkdata" layoutX="75.0" layoutY="62.0" mnemonicParsing="false" onAction="#checkData" prefHeight="50.0" prefWidth="121.0" text="Check Data" textOverrun="CLIP">
               <effect>
                 <DropShadow>
                   <color>
@@ -54,7 +37,36 @@
                 </DropShadow>
               </effect>
               <font>
-                <Font name="Courier New" size="15.0"/>
+                <Font name="Calibri Bold" size="15.0" />
+              </font>
+            </Button>
+            <Button fx:id="importdata" layoutX="75.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleImport" prefHeight="50.0" prefWidth="121.0" text="Import" textOverrun="CLIP">
+              <effect>
+                <DropShadow>
+                  <color>
+                    <Color blue="0.880" green="1.000" red="0.000" fx:id="x1" />
+                  </color>
+                </DropShadow>
+              </effect>
+              <font>
+                <Font name="Calibri Bold" size="15.0" fx:id="x2" />
+              </font>
+            </Button>
+            <Button fx:id="exportdata" font="$x2" layoutX="75.0" layoutY="234.0" mnemonicParsing="false" onAction="#exportMysql" prefHeight="50.0" prefWidth="121.0" text="Export" textOverrun="CLIP">
+              <effect>
+                <DropShadow color="$x1" />
+              </effect>
+            </Button>
+            <Button fx:id="reportmissingdata" layoutX="75.0" layoutY="324.0" mnemonicParsing="false" onAction="#reportMissingData" prefHeight="50.0" prefWidth="121.0" text="Missing Data" textOverrun="CLIP">
+              <effect>
+                <DropShadow>
+                  <color>
+                    <Color blue="0.880" green="1.000" red="0.000" />
+                  </color>
+                </DropShadow>
+              </effect>
+              <font>
+                <Font name="Calibri Bold" size="15.0" />
               </font>
             </Button>
           </children>

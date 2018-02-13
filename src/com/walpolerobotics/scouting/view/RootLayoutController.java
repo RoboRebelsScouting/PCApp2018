@@ -42,4 +42,12 @@ public class RootLayoutController {
         mainApp.checkData();
 
     }
+
+    @FXML
+    private void reportMissingData(){
+
+        mainApp.reportMissingData();
+
+    }
+
 }
