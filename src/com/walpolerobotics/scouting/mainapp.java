@@ -320,10 +320,10 @@ public class mainapp extends Application {
 
                 // get match number, robot number, alliance color, alliance position from the record
                 // subtract one from the alliancePosition since the array in MatchSet goes from 0-2 not 1-3
-                int matchNumber = rs.getInt("Match Number");
-                int robotNumber = rs.getInt("Robot Number");
-                int alliancePosition = rs.getInt("Alliance Position");
-                String allianceColor = rs.getString("Alliance Color");
+                int matchNumber = rs.getInt("matchNumber");
+                int robotNumber = rs.getInt("robotNumber");
+                int alliancePosition = rs.getInt("alliancePosition");
+                String allianceColor = rs.getString("allianceColor");
 
                 alliancePosition -= 1;
 
