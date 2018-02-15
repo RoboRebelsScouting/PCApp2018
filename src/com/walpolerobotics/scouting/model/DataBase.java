@@ -100,6 +100,8 @@ public class DataBase {
                     String MatchNumber = rs.getString("matchNumber");
                     String ScouterName = rs.getString("scouterName");
                     String FirstCompetition = rs.getString("firstCompetition");
+                    String AllianceColor = rs.getString("allianceColor");
+                    String AlliancePosition = rs.getString("alliancePosition");
 
 
                     if ((RobotNumber == rm.robotNumber.intValue()) && (MatchNumber.equals(rm.matchNumber.getValue())) && (ScouterName.equals(rm.scouterName.getValue())) && (FirstCompetition.equals(rm.firstCompetition.getValue()))) {
@@ -114,13 +116,14 @@ public class DataBase {
                         try{
 
                                 stmt = con.createStatement();
-                                ss = "INSERT INTO matchdata (robotNumber, matchNumber, gameEvent, subEvent, timeStamp, scouterName, firstCompetition)\nVALUES\n(" + rm.robotNumber.intValue();
+                                ss = "INSERT INTO matchdata (robotNumber, matchNumber, gameEvent, timeStamp, scouterName, firstCompetition, allianceColor, alliancePosition)\nVALUES\n(" + rm.robotNumber.intValue();
                                 ss += ", \"" + rm.matchNumber.get() + "\"";
                                 ss += ", \"" + rmd.gameEvent + "\"";
-                                ss += ", \"" + rmd.subEvent + "\"";
                                 ss += ", \"" + rmd.timeStamp + "\"";
                                 ss += ", \"" + rm.scouterName.get() + "\"";
                                 ss += ", \"" + rm.firstCompetition.get() + "\"";
+                                ss += ", \"" + rm.allianceColor.get() + "\"";
+                                ss += ", \"" + rm.alliancePosition.get() + "\"";
                                 ss += ");";
                                     stmt.execute(ss);
                                 System.out.println(ss);

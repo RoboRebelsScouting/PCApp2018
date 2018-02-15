@@ -14,6 +14,8 @@ public class RobotMatch {
    public IntegerProperty robotNumber;
    public StringProperty matchNumber;
    public StringProperty scouterName;
+   public StringProperty allianceColor;
+   public IntegerProperty alliancePosition;
    public StringProperty firstCompetition;
 
     private ArrayList<RobotMatchData> eventList;
@@ -24,14 +26,16 @@ public class RobotMatch {
 
 
    public RobotMatch() {
-      this(0, "", "", "");
+      this(0, "", "", "", "", 0);
    }
 
-   public RobotMatch(Integer robotNumber, String matchNumber, String scouterName, String firstCompetition) {
+   public RobotMatch(Integer robotNumber, String matchNumber, String scouterName, String firstCompetition, String allianceColor, Integer alliancePosition) {
       this.robotNumber = new SimpleIntegerProperty(robotNumber);
       this.matchNumber = new SimpleStringProperty(matchNumber);
       this.scouterName = new SimpleStringProperty(scouterName);
       this.firstCompetition = new SimpleStringProperty(firstCompetition);
+      this.allianceColor = new SimpleStringProperty(allianceColor);
+      this.alliancePosition = new SimpleIntegerProperty(alliancePosition);
        this.eventList = new ArrayList<RobotMatchData>();
 
    }
@@ -54,6 +58,7 @@ public class RobotMatch {
         this.matchNumber.set(matchNumber);
     }
     public StringProperty matchNumberProperty(){return matchNumber;}
+
     public String getScouterName(){
         return scouterName.get();
     }
@@ -63,6 +68,7 @@ public class RobotMatch {
     public StringProperty scouterNameProperty(){
         return scouterName;
     }
+
     public String getFirstCompetition(){
         return firstCompetition.get();
     }
@@ -73,6 +79,22 @@ public class RobotMatch {
         return firstCompetition;
     }
 
+    public String getAllianceColor(){
+        return allianceColor.get();
+    }
+    public void setAllianceColor(String firstCompetition){
+        this.allianceColor.set(firstCompetition);
+    }
+    public StringProperty allianceColorProperty(){
+        return allianceColor;
+    }
 
+    public Integer getAlliancePosition(){
+        return alliancePosition.get();
+    }
+    public void setAlliancePosition(Integer alliancePosition){ this.alliancePosition.set(alliancePosition); }
+    public IntegerProperty alliancePositionProperty(){
+        return alliancePosition;
+    }
 }
 

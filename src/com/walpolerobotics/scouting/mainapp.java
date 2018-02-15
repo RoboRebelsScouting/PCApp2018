@@ -97,9 +97,9 @@ public class mainapp extends Application {
             String firstCompetition = "";
             String matchNumber = "";
             String scouterName = "";
+            String allianceColor = "";
+            int alliancePosition = 0;
             System.out.println("reading file: " + file.getName());
-
-
 
 
             while ((line = br.readLine()) != null) {
@@ -108,55 +108,45 @@ public class mainapp extends Application {
                 if (lineCount == 0) {
                     robotNumber = Integer.parseInt(lineList[2]);
                     matchNumber = lineList[1];
-                    scouterName = lineList[3];
-                    firstCompetition = lineList[0];}
-                else{
+                    scouterName = lineList[5];
+                    firstCompetition = lineList[0];
+                    allianceColor = lineList[3];
+                    alliancePosition = Integer.parseInt(lineList[4]);
+                } else {
                     RobotMatchData rmd = new RobotMatchData();
                     rmd.robotNumber = robotNumber;
                     rmd.firstCompetition = firstCompetition;
                     rmd.matchNumber = matchNumber;
                     rmd.timeStamp = Integer.parseInt(lineList[0]);
                     rmd.gameEvent = lineList[1];
+                    rmd.allianceColor = allianceColor;
+                    rmd.alliancePosition = alliancePosition;
                     rm.setRobotNumber(robotNumber);
                     rm.setFirstCompetition(firstCompetition);
                     rm.setMatchNumber(matchNumber);
                     rm.setScouterName(scouterName);
-
-
-                    if(lineList[1].equals("allianceColor")&& lineList[2].equals("Blue")){
-                        rmd.subEvent = 0;
-                    }else{
-                        if(lineList[1].equals("allianceColor")&& lineList[2].equals("Red")) {
-                            rmd.subEvent = 1;
-                        }else{
-                            rmd.subEvent = Integer.parseInt(lineList[2]);
-                        }
-                    }
-
+                    rm.setAllianceColor(allianceColor);
+                    rm.setAlliancePosition(alliancePosition);
 
 
                     rm.getEventList().add(rmd);
                 }
 
 
-
-
-
-
                 lineCount++;
-                }
+            }
 
-            r.robotMatch.add(rm);
-            importedFilesList.add(file.getName());
-            //robotData.add(new Robot(8976,7,3,72,7,3,5,"shooting",0));
-            r.setRobotNumber(robotNumber);
-            System.out.println("the robot number was set to" + r.getRobotNumber());
+                r.robotMatch.add(rm);
+                importedFilesList.add(file.getName());
+                //robotData.add(new Robot(8976,7,3,72,7,3,5,"shooting",0));
+                r.setRobotNumber(robotNumber);
+                System.out.println("the robot number was set to" + r.getRobotNumber());
 
 
-            robotData.add(r);
-            robotMatchInfo.add(rm);
-            br.close();
-        } catch (IOException e) {
+                robotData.add(r);
+                robotMatchInfo.add(rm);
+                br.close();
+            } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Could not load data");
@@ -164,18 +154,15 @@ public class mainapp extends Application {
             alert.showAndWait();
         }
 
-        try {
-            String newPath = "C:\\Users\\1153s\\Documents\\ImportedMatchFiles";
-            String newName = newPath+File.separator+file.getName();
+            try {
+                String newPath = "C:\\Users\\1153s\\Documents\\ImportedMatchFiles";
+                String newName = newPath + File.separator + file.getName();
 
-            Files.move(Paths.get(file.getAbsolutePath()), Paths.get(newName));
-        }catch (IOException e){
-            e.printStackTrace();
+                Files.move(Paths.get(file.getAbsolutePath()), Paths.get(newName));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
-
-    }
-
     public void importRobotPitData(File file) {
         File folder = new File("C:/Users/1153s/Documents/NewPitFiles");
         try {

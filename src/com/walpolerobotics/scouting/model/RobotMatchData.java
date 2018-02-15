@@ -9,7 +9,8 @@ public class RobotMatchData {
     public String matchNumber;
     public Integer robotNumber;
     public String firstCompetition;
-    public Integer subEvent;
+    public String allianceColor;
+    public Integer alliancePosition;
 
 
 
