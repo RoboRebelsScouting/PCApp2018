@@ -4,36 +4,61 @@ package com.walpolerobotics.scouting.model;
  * Created by 1153 on 1/24/2018.
  */
 public class RobotPitData {
-    public String scouterName;
+    public String scout;
     public String competition;
-    public String team;
-    public Integer weight;
-    public String footPrint;
+    public Integer team;
+    public Integer robotWeight;
+    public Integer robotHeight;
     public String frame;
+    public String feet;
+    public String climbWay;
+    public boolean vault;
     public String codeLanguage;
-    public String startLocation;
-    public String autoScore;
-    public String pickup;
-    public String allianceSwitch;
-    public String vault;
-    public String scale;
-    public String climb;
+    public String sideAuto;
 
+    public enum Frame {
+        kitbot,
+        steel,
+        wood,
+        aluminum,
+        other,
+    }
+
+    public enum climb {
+        noClimb,
+        yesClimb,
+        climbCarry,
+        climbSupport,
+    }
+    public enum side{
+        startLeft,
+        startMiddle,
+        startRight,
+    }
+    public enum feet{
+        noScale,
+        fourFeet,
+        fiveFeet,
+        sixFeet,
+    }
+    public enum cLanguage{
+        codeJava,
+        codeC,
+        codeLab,
+        codeOther;
+    }
 
 
     public void clear() {
-        this.scouterName = "";
+        this.scout = "";
         this.competition = "";
-        this.team = "";
-        this.weight = 0;
-        this.footPrint = "";
+        this.team = 0;
+        this.robotWeight = 0;
+        this.robotHeight =0;
         this.frame = "";
+        this.feet = "";
+        this.climbWay = "";
+        this.vault = false;
         this.codeLanguage = "";
-        this.startLocation = "";
-        this.autoScore = "";
-        this.pickup = "";
-        this.vault = "";
-        this.allianceSwitch = "";
-        this.scale = "";
-        this.climb = "";
+        this.sideAuto = "";
 }}

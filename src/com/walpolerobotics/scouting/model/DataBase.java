@@ -52,20 +52,17 @@ public class DataBase {
             stmt = con.createStatement();
             String ss = new String();
             //ss = "INSERT INTO pitInfo(Scout)\nVALUES\n(";
-            ss = "INSERT INTO pitinfo(competition, team, scouterName, weight, footPrint, frame, codeLanguage, startLocation, autoScore, pickup, allianceSwitch,  vault, scale, climb)\nVALUES\n(" + "\"" + rpd.competition +"\"";
+            ss = "INSERT INTO pitinfo(scout, team, competition, robotWeight, robotHeight, frame, feet, climbWay, vault, codeLanguage, sideAuto)\nVALUES\n(" + "\"" + rpd.scout +"\"";
             ss += ", \"" + rpd.team + "\"";
-            ss += ", \"" + rpd.scouterName + "\"";
-            ss += ", \"" + rpd.weight + "\"";
-            ss += ", \"" + rpd.footPrint + "\"";
+            ss += ", \"" + rpd.competition + "\"";
+            ss += ", \"" + rpd.robotWeight + "\"";
+            ss += ", \"" + rpd.robotHeight + "\"";
             ss += ", \"" + rpd.frame + "\"";
-            ss += ", \"" + rpd.codeLanguage + "\"";
-            ss += ", \"" + rpd.startLocation + "\"";
-            ss += ", \"" + rpd.autoScore + "\"";
-            ss += ", \"" + rpd.pickup + "\"";
-            ss += ", \"" + rpd.allianceSwitch + "\"";
+            ss += ", \"" + rpd.feet + "\"";
+            ss += ", \"" + rpd.climbWay + "\"";
             ss += ", \"" + rpd.vault + "\"";
-            ss += ", \"" + rpd.scale + "\"";
-            ss += ", \"" + rpd.climb + "\")";
+            ss += ", \"" + rpd.codeLanguage + "\"";
+            ss += ", \"" + rpd.sideAuto + "\")";
 
 
             stmt.execute(ss);
@@ -79,7 +76,6 @@ public class DataBase {
 
 
     }
-
 
 
     public void writeRobotToDB(Robot r) {

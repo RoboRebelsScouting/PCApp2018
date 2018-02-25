@@ -69,7 +69,7 @@ public class mainapp extends Application {
 
         String pathName = folder.getAbsolutePath();
         String[] listOfFiles = folder.list();
-        if (listOfFiles != null){
+        if (listOfFiles != null) {
             for (int c = 0; c < listOfFiles.length; c++) {
                 String fullPathName = pathName + "/" + listOfFiles[c];
                 File newFile = new File(fullPathName);
@@ -83,7 +83,6 @@ public class mainapp extends Application {
                 }
             }
         }
-
     public void importRobotMatchData(File file) {
 
         try {
@@ -177,7 +176,7 @@ public class mainapp extends Application {
 
             while ((line = br.readLine()) != null) {
                 String[] lineList = line.split(",");
-                if(lineList.length != 11){
+                if(lineList.length != 10){
                     System.out.println("didn't get all columns");
                     for(int c= 0;c<lineList.length;c++){
                         System.out.println("column: " + c + " ;value: "  + lineList[c]);
@@ -185,20 +184,17 @@ public class mainapp extends Application {
                 }
                 if (lineCount == 0) {
 
-                    rpd.scouterName = lineList[0];
-                    rpd.competition = lineList[1];
-                    rpd.team = lineList[2];
-                    rpd.weight = Integer.parseInt(lineList[3]);
-                    rpd.footPrint = lineList[4];
+                    rpd.scout = lineList[0];
+                    rpd.team = Integer.parseInt(lineList[1]);
+                    rpd.competition = lineList[2];
+                    rpd.robotWeight = Integer.parseInt(lineList[3]);
+                    rpd.robotHeight = Integer.parseInt(lineList[4]);
                     rpd.frame = lineList[5];
-                    rpd.codeLanguage = lineList[6];
-                    rpd.startLocation = lineList[7];
-                    rpd.autoScore = lineList[8];
-                    rpd.pickup = lineList[9];
-                    rpd.vault = lineList[10];
-                    rpd.allianceSwitch = lineList[11];
-                    rpd.scale = lineList[13];
-                    rpd.climb = lineList[14];
+                    rpd.feet = lineList[6];
+                    rpd.climbWay = lineList[7];
+                    rpd.vault = Boolean.parseBoolean(lineList[8]);
+                    rpd.codeLanguage = lineList[9];
+                    rpd.sideAuto = lineList[10];
 
 
 
@@ -226,6 +222,7 @@ public class mainapp extends Application {
         }
 
     }
+
 
     public void initRootLayout() {
         try {
