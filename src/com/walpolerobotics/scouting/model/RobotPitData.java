@@ -11,10 +11,9 @@ public class RobotPitData {
     public Integer robotHeight;
     public String frame;
     public String feet;
-    public String climbWay;
+    public String climb;
     public boolean vault;
     public String codeLanguage;
-    public String sideAuto;
 
     public enum Frame {
         kitbot,
@@ -57,8 +56,7 @@ public class RobotPitData {
         this.robotHeight =0;
         this.frame = "";
         this.feet = "";
-        this.climbWay = "";
+        this.climb = "";
         this.vault = false;
         this.codeLanguage = "";
-        this.sideAuto = "";
 }}
