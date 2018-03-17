@@ -32,6 +32,7 @@ public class mainapp extends Application {
     private ObservableList<RobotMatch> robotMatchInfo = FXCollections.observableArrayList();
     private ObservableList<RobotPitData> robotPitDataList = FXCollections.observableArrayList();
     private ObservableList<String> importedFilesList = FXCollections.observableArrayList();
+    private ObservableList<FirstMatchData> FirstDataList = FXCollections.observableArrayList();
     private List<MatchSet> matchSetList = new ArrayList <MatchSet>();
 
     public DataBase db;
@@ -77,12 +78,16 @@ public class mainapp extends Application {
                     if (fullPathName.endsWith("-pit.csv")) {
                         importRobotPitData(newFile);
                     } else {
+                        if (fullPathName.endsWith("-first.csv")) {
+                            importFirstData(newFile);
+                        } else {
                             importRobotMatchData(newFile);
                         }
                     }
                 }
             }
         }
+    }
     public void importRobotMatchData(File file) {
 
         try {
@@ -222,6 +227,63 @@ public class mainapp extends Application {
 
     }
 
+    public void importFirstData(File file) {
+        try {
+            System.out.println("Reading first file " + file.getName());
+
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+
+            FirstMatchData fmd = new FirstMatchData();
+
+            int lineCount = 0;
+
+            while ((line = br.readLine()) != null) {
+                String[] lineList = line.split(",");
+                if(lineList.length != 6){
+                    System.out.println("didn't get all columns");
+                    for(int c= 0;c<lineList.length;c++){
+                        System.out.println("column: " + c + " ;value: "  + lineList[c]);
+                    }
+                }
+                if (lineCount == 0) {
+
+
+                    fmd.team = lineList[0];
+                    fmd.autoSwitchOwnershipSec = Integer.parseInt(lineList[1]);
+                    fmd.autoScaleOwnershipSec = Integer.parseInt(lineList[2]);
+                    fmd.teleopSwitchOwnershipSec = Integer.parseInt(lineList[3]);
+                    fmd.teleopScaleOwnershipSec = Integer.parseInt(lineList[4]);
+                    fmd.totalSwitchOwnershipSec = Integer.parseInt(lineList[5]);
+                    fmd.totalScaleOwnershipSec = Integer.parseInt(lineList[6]);
+
+
+
+
+                    lineCount++;
+
+                    // add this robot pit data to the list
+                    FirstDataList.add(fmd);
+                    importedFilesList.add(file.getName());
+                }
+            }
+            br.close();
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        try {
+            String newPath = "C:\\Users\\1153s\\Documents\\PreviouslyAddedPitInfo";
+            String newName = newPath+File.separator+file.getName();
+            if(Files.exists(Paths.get(newName))){
+                newName += System.currentTimeMillis();
+            }
+            Files.move(Paths.get(file.getAbsolutePath()), Paths.get(newName));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
 
     public void initRootLayout() {
         try {

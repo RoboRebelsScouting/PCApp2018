@@ -76,6 +76,36 @@ public class DataBase {
 
     }
 
+    public void writeFirstdataToDB (FirstMatchData fmd) {
+        Statement stmt = null;
+        ResultSet rs = null;
+
+
+        try {
+            stmt = con.createStatement();
+            String ss = new String();
+
+            stmt = con.createStatement();
+            ss = "INSERT INTO firstalliancedata(team, autoSwitchOwnershipSec, autoScaleOwnershipSec, teleopSwitchOwnershipSec, teleopScaleOwnershipSec, totalSwitchOwnershipSec, totalScaleOwnershipSec)\nVALUES\n(" + "\"" + fmd.team + "\"";
+            ss += ", \"" + fmd.autoSwitchOwnershipSec + "\"";
+            ss += ", \"" + fmd.autoScaleOwnershipSec + "\"";
+            ss += ", \"" + fmd.teleopSwitchOwnershipSec+ "\"";
+            ss += ", \"" + fmd.teleopScaleOwnershipSec + "\"";
+            ss += ", \"" + fmd.totalSwitchOwnershipSec + "\"";
+            ss += ", \"" + fmd.totalScaleOwnershipSec + "\")";
+
+
+            System.out.println(ss);
+
+            stmt.execute(ss);
+
+
+
+        }catch(SQLException ex){
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+
+    }
 
     public void writeRobotToDB(Robot r) {
         Statement stmt = null;
