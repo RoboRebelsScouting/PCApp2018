@@ -196,7 +196,7 @@ public class mainapp extends Application {
                     rpd.robotHeight = Integer.parseInt(lineList[4]);
                     rpd.frame = lineList[5];
                     rpd.feet = lineList[6];
-                    rpd.climb = lineList[7];
+                    rpd.climbWay = lineList[7];
                     rpd.vault = Boolean.parseBoolean(lineList[8]);
                     rpd.codeLanguage = lineList[9];
 

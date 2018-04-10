@@ -11,7 +11,7 @@ public class RobotPitData {
     public Integer robotHeight;
     public String frame;
     public String feet;
-    public String climb;
+    public String climbWay;
     public boolean vault;
     public String codeLanguage;
 
@@ -56,7 +56,7 @@ public class RobotPitData {
         this.robotHeight =0;
         this.frame = "";
         this.feet = "";
-        this.climb = "";
+        this.climbWay = "";
         this.vault = false;
         this.codeLanguage = "";
 }}

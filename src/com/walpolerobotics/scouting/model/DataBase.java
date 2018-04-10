@@ -52,14 +52,14 @@ public class DataBase {
             stmt = con.createStatement();
             String ss = new String();
             //ss = "INSERT INTO pitInfo(Scout)\nVALUES\n(";
-            ss = "INSERT INTO pitinfo(scout, team, competition, robotWeight, robotHeight, frame, feet, climb, vault, codeLanguage)\nVALUES\n(" + "\"" + rpd.scout +"\"";
+            ss = "INSERT INTO pitinfo(scout, team, competition, robotWeight, robotHeight, frame, feet, climbWay, vault, codeLanguage)\nVALUES\n(" + "\"" + rpd.scout +"\"";
             ss += ", \"" + rpd.team + "\"";
             ss += ", \"" + rpd.competition + "\"";
             ss += ", \"" + rpd.robotWeight + "\"";
             ss += ", \"" + rpd.robotHeight + "\"";
             ss += ", \"" + rpd.frame + "\"";
             ss += ", \"" + rpd.feet + "\"";
-            ss += ", \"" + rpd.climb + "\"";
+            ss += ", \"" + rpd.climbWay + "\"";
             ss += ", \"" + rpd.vault + "\"";
             ss += ", \"" + rpd.codeLanguage + "\")";
 
